@@ -1,38 +1,32 @@
-name: Deploy to GKE (using DOCR images)
+name: Deploy to GKE
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Authenticate using the SA key
+      # Authenticate with the GCP service account
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      # Install gcloud CLI
+      # Install gcloud
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT }}
+          version: latest
 
-      # Debug step (optional, but helps confirm auth)
-      - name: Verify authentication
-        run: |
-          gcloud auth list
-          gcloud config list
-          gcloud projects describe ${{ secrets.GCP_PROJECT }}
-
-      # Get GKE credentials
+      # Configure kubectl to talk to your GKE cluster
       - name: Get GKE credentials
         uses: google-github-actions/get-gke-credentials@v1
         with:
@@ -40,8 +34,8 @@ jobs:
           location: ${{ secrets.GKE_ZONE }}
           project_id: ${{ secrets.GCP_PROJECT }}
 
-      # Deploy manifests
-      - name: Deploy all manifests to GKE
+      # Example: Deploy to Kubernetes
+      - name: Deploy to GKE
         run: |
-          kubectl apply -f .
-          kubectl rollout status deployment --all --timeout=5m
+          kubectl apply -f k8s/deployment.yaml
+          kubectl rollout status deployment/my-deployment
