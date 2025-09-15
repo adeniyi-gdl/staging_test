@@ -27,7 +27,10 @@ jobs:
           location: ${{ secrets.GKE_ZONE }}
           project_id: ${{ secrets.GCP_PROJECT }}
 
-      - name: Deploy manifests to GKE
+      - name: Deploy all manifests to GKE
         run: |
+          # Apply every manifest in the repo
           kubectl apply -f .
-          kubectl rollout status --watch=true --timeout=5m deployment --all
+
+          # Wait for all deployments in the cluster to finish rolling out
+          kubectl rollout status deployment --all --timeout=5m
