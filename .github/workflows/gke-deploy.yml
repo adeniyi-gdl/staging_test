@@ -38,7 +38,8 @@ jobs:
       - name: Deploy to GKE
         run: |
           echo "Applying Kubernetes manifests..."
-          kubectl apply -f deployment/
+          kubectl apply -f deployment/*.yaml
+          kubectl apply -f deployment/*.yml || true
 
           echo "Waiting for all deployments to roll out..."
           kubectl rollout status deployment --all --timeout=5m
