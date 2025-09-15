@@ -34,8 +34,11 @@ jobs:
           location: ${{ secrets.GKE_ZONE }}
           project_id: ${{ secrets.GCP_PROJECT }}
 
-      # Example: Deploy to Kubernetes
+      # Deploy to Kubernetes
       - name: Deploy to GKE
         run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl rollout status deployment/my-deployment
+          # Apply all service and deployment manifests
+          kubectl apply -f . --recursive
+
+          # Wait for all deployments to roll out
+          kubectl rollout status deployment --all --timeout=5m
