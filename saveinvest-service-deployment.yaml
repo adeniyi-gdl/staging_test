@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: saveinvest-service
+  labels:
+    app: saveinvest-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: saveinvest-service
+  template:
+    metadata:
+      labels:
+        app: saveinvest-service
+    spec:
+      containers:
+      - name: saveinvest-service
+        image: registry.digitalocean.com/user-service/docker.io/saveinvest-service@sha256:40ec2bb8cc6702b04cfe5bd09c8ca56fb14eb500197dc23a8a24e5090652c6e7
+        ports:
+        - containerPort: 3078
+        env:
+        - name: DB_HOST
+          value: ''
+
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+      imagePullSecrets:
+      - name: do-registry

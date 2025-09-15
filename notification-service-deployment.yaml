@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-service
+  labels:
+    app: notification-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: notification-service
+  template:
+    metadata:
+      labels:
+        app: notification-service
+    spec:
+      containers:
+      - name: notification-service
+        image: registry.digitalocean.com/user-service/docker.io/notification-service@sha256:234aa354070641ae965eca6a1c8f670564fae27291d89bacb7da9f63d88c6c49
+        ports:
+        - containerPort: 3079
+        env:
+        - name: DB_HOST
+          value: ''
+
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+
+      imagePullSecrets:
+      - name: do-registry

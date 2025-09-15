@@ -1,0 +1,8 @@
+# Use the correct ChromaDB image from GitHub Container Registry.
+FROM ghcr.io/chroma-core/chroma:latest
+
+EXPOSE 8000
+
+# Build and run commands:
+# docker build -f Dockerfile.chromadb -t my-chromadb .
+# docker run -d -p 8000:8000 my-chromadb

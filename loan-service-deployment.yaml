@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loan-service
+  labels:
+    app: loan-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: loan-service
+  template:
+    metadata:
+      labels:
+        app: loan-service
+    spec:
+      containers:
+      - name: loan-service
+        image: registry.digitalocean.com/user-service/docker.io/t/loan-service@sha256:27a7ebdb83c3b8c2c36ba25e12b27711af4710c85bcdc280ddcbbc8ce78db2e6
+        ports:
+        - containerPort: 3081
+        env:
+        - name: DB_HOST
+          value: ''
+
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+  
+      imagePullSecrets:
+      - name: do-registry
+
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   annotations:
+#     kompose.cmd: kompose convert -f docker-compose.yml
+#     kompose.version: 1.26.1 (HEAD)
+#   creationTimestamp: null
+#   labels:
+#     io.kompose.service: loan-service
+#   name: loan-service
+# spec:
+#   replicas: 3
+#   selector:
+#     matchLabels:
+#       io.kompose.service: loan-service
+#   strategy: {}
+#   template:
+#     metadata:
+#       annotations:
+#         kompose.cmd: kompose convert -f docker-compose.yml
+#         kompose.version: 1.26.1 (HEAD)
+#       creationTimestamp: null
+#       labels:
+#         io.kompose.service: loan-service
+#     spec:
+#       containers:
+#         - env:
+#             - name: DB_HOST
+#               value: gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
+#             - name: DB_NAME
+#               value: gdl
+#             - name: DB_PASSWORD
+#               value: yS6JVh3i3FtplyqU
+#             - name: DB_PORT
+#               value: "25060"
+#             - name: DB_ROOT_PASSWORD
+#             - name: DB_USERNAME
+#               value: gdldev100
+
+#             - name: ACCT_BASE_URL
+#               value: https://test-accts.gdlapi.com.ng
+
+#             # System Authorization
+#             - name: SYS_AUTH
+#               value: GTT^$ED843yuygde6473T^$^W&(())43UUU67*!!43
+#             - name: EKY
+#               value: 434rfdvffv&@&
+#             - name: BEARERAUTH
+#               value: U2FsdGVkX1/2mrkmozD/1rrlHrtjfwEuXp5zh1uK0gDfPW+CvYftJaaS+ilRpMq3aTo9ZBLArPJ5cZvgefPo2A==
+
+#             #Pay AUTH
+#             - name: PAY_EKY
+#               value: GDLD(D(D(3232zokYY
+
+#             #Token AUTH
+#             - name: TK_EKY
+#               value: YEGhh(D(3232zokYY
+
+#           image: registry.digitalocean.com/user-service/docker.io/t/loan-service@sha256:27a7ebdb83c3b8c2c36ba25e12b27711af4710c85bcdc280ddcbbc8ce78db2e6
+#           name: loan-service
+#           ports:
+#             - containerPort: 3081
+#           resources: {}
+#       # restartPolicy: Always
+#       imagePullSecrets:
+#         - name: do-registry
+# status: {}

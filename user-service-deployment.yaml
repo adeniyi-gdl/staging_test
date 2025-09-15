@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+    spec:
+      containers:
+      - name: user-service
+        image: registry.digitalocean.com/user-service/docker.io/user-service@sha256:0b8d6e7b2890a4de7e919228b588bd3059fb401d158834e030dc47b9ea14be2e
+        ports:
+          - containerPort: 3080
+        env:
+          - name: DB_HOST
+            value: 'gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com'
+
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+
+      imagePullSecrets:
+        - name: do-registry
