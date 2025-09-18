@@ -23,9 +23,8 @@ jobs:
       - name: Deploy to DigitalOcean Kubernetes
         run: |
           echo "Applying Kubernetes manifests..."
-          kubectl apply -f ./*-deployment.yaml || true
-          kubectl apply -f ./*-service.yaml || true
-          kubectl apply -f ./*-ingress*.yaml || true
+          # Apply only K8s manifests (skip docker-compose.yml and others)
+          kubectl apply -f . --recursive --selector app!=docker-compose || true
 
           echo "Waiting for all deployments to roll out..."
-          kubectl rollout status deployment --all --timeout=5m
+          kubectl get deploy -o name | xargs -n1 kubectl rollout status --timeout=5m
