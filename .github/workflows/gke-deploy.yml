@@ -19,11 +19,13 @@ jobs:
           mkdir -p $HOME/.kube
           echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
-      # Deploy to Kubernetes
+      # Deploy to Kubernetes (ignore docker-compose.yml)
       - name: Deploy to DigitalOcean Kubernetes
         run: |
           echo "Applying Kubernetes manifests..."
-          kubectl apply -f ./*.yml
+          kubectl apply -f ./*-deployment.yaml || true
+          kubectl apply -f ./*-service.yaml || true
+          kubectl apply -f ./*-ingress*.yaml || true
 
           echo "Waiting for all deployments to roll out..."
           kubectl rollout status deployment --all --timeout=5m
