@@ -1,4 +1,4 @@
-name: Deploy to GKE
+name: Deploy to DigitalOcean Kubernetes
 
 on:
   push:
@@ -13,29 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Authenticate with the GCP service account
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      # Install gcloud
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          project_id: ${{ secrets.GCP_PROJECT }}
-          version: latest
-
-      # Configure kubectl to talk to your GKE cluster
-      - name: Get GKE credentials
-        uses: google-github-actions/get-gke-credentials@v1
-        with:
-          cluster_name: ${{ secrets.GKE_CLUSTER }}
-          location: ${{ secrets.GKE_ZONE }}
-          project_id: ${{ secrets.GCP_PROJECT }}
+      # Configure kubectl with DigitalOcean kubeconfig
+      - name: Set up kubectl
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
 
       # Deploy to Kubernetes
-      - name: Deploy to GKE
+      - name: Deploy to DigitalOcean Kubernetes
         run: |
           echo "Applying Kubernetes manifests..."
           kubectl apply -f ./*.yml
