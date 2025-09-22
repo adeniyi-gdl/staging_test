@@ -42,7 +42,7 @@ services:
       - "5008:3075"
 
   user-service:
-    image: registry.digitalocean.com/user-service/docker.io/user-service@sha256:badfd1543023c652c19582a1928e4020347ee172a584437270ca51fd333c9256
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:30a3833a52aa20ec002c009cf2bd799762a9c125a025b95af1c4215c1e276b93
     ports:
       - "5009:3080"
 
