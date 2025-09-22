@@ -3,55 +3,82 @@ version: "3.9"
 services:
   hpa-service:
     image: registry.digitalocean.com/user-service/docker.io/hpa-service@sha256:351ff33fce865e82b203353178ca5e907e88422f13c444dfd95658170cac4626
-    ports:
-      - "5001:3090"
+    networks:
+      - staging_net
 
   gdl-website:
     image: registry.digitalocean.com/user-service/docker.io/gdl-website@sha256:e2b680209cfd32c2be65486605e2a11d16b92a3fd6de5ee830edb8b651456154
-    ports:
-      - "5002:3013"
+    networks:
+      - staging_net
 
   saveinvest-service:
     image: registry.digitalocean.com/user-service/docker.io/saveinvest-service@sha256:40ec2bb8cc6702b04cfe5bd09c8ca56fb14eb500197dc23a8a24e5090652c6e7
-    ports:
-      - "5003:3078"
+    networks:
+      - staging_net
 
   bankone-service:
     image: registry.digitalocean.com/user-service/docker.io/bankone-service@sha256:1f78ebe06ea1f1f0d87e89ef34588fff222a32844c4aff61c49e03647913d0d0
-    ports:
-      - "5004:3047"
+    networks:
+      - staging_net
 
   notification-service:
     image: registry.digitalocean.com/user-service/docker.io/notification-service@sha256:234aa354070641ae965eca6a1c8f670564fae27291d89bacb7da9f63d88c6c49
-    ports:
-      - "5005:3079"
+    networks:
+      - staging_net
 
   loan-service:
     image: registry.digitalocean.com/user-service/docker.io/t/loan-service@sha256:27a7ebdb83c3b8c2c36ba25e12b27711af4710c85bcdc280ddcbbc8ce78db2e6
-    ports:
-      - "5006:3081"
+    networks:
+      - staging_net
 
   symplus-service:
     image: registry.digitalocean.com/user-service/docker.io/symplus-service@sha256:6f54e51e962610278347ecb698b9346842e1ad5185a4857b9a7d9d3a1ac1ca36
-    ports:
-      - "5007:3011"
+    networks:
+      - staging_net
 
   transaction-service:
     image: registry.digitalocean.com/user-service/docker.io/transaction-service@sha256:96aeb3ada303af55335c8f8643638aa5ca7db0cc283c1c571b9c542a31c3244b
-    ports:
-      - "5008:3075"
+    networks:
+      - staging_net
 
   user-service:
     image: registry.digitalocean.com/stagingenv/user-service@sha256:30a3833a52aa20ec002c009cf2bd799762a9c125a025b95af1c4215c1e276b93
-    ports:
-      - "5009:3080"
+    networks:
+      - staging_net
 
   dms-service:
     image: registry.digitalocean.com/user-service/docker.io/dms-service@sha256:85b3f068fd57bf7cc7400b13043c154d406a438d4105da54f4fe639c4aefc14d
-    ports:
-      - "5010:3073"
+    networks:
+      - staging_net
 
   account-service:
     image: registry.digitalocean.com/user-service/docker.io/account-service@sha256:04e8bd91e3e0f8e26500d5ce3e2aa8afb147ba64e57c1bee58fae8b08127621a
+    networks:
+      - staging_net
+
+  nginx-proxy:
+    image: nginx:stable
     ports:
-      - "5011:3077"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/certs:/etc/letsencrypt:ro
+    depends_on:
+      - user-service
+      - account-service
+      - dms-service
+      - hpa-service
+      - gdl-website
+      - saveinvest-service
+      - bankone-service
+      - notification-service
+      - loan-service
+      - symplus-service
+      - transaction-service
+    networks:
+      - staging_net
+
+networks:
+  staging_net:
+    driver: bridge
