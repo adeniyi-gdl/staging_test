@@ -57,11 +57,9 @@ services:
   nginx-proxy:
     image: nginx:stable
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:80"   # Cloudflare handles HTTPS
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/certs:/etc/letsencrypt
     depends_on:
       - user-service
       - account-service
