@@ -50,7 +50,7 @@ services:
       - staging_net
 
   account-service:
-    image: registry.digitalocean.com/user-service/docker.io/account-service@sha256:04e8bd91e3e0f8e26500d5ce3e2aa8afb147ba64e57c1bee58fae8b08127621a
+    image: registry.digitalocean.com/stagingenv/account-service@sha256:7cb0023306044d808d19b7e6547131cda08e3f84507875cad55f8a3221de45c2
     networks:
       - staging_net
 
