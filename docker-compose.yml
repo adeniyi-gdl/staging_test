@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   hpa-service:
     image: registry.digitalocean.com/user-service/docker.io/hpa-service@sha256:351ff33fce865e82b203353178ca5e907e88422f13c444dfd95658170cac4626
@@ -62,8 +60,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - ./nginx/certs:/etc/letsencrypt:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/letsencrypt
     depends_on:
       - user-service
       - account-service
