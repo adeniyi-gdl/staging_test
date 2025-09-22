@@ -1,91 +1,57 @@
-version: "2"
+version: "3.9"
 
 services:
+  hpa-service:
+    image: registry.digitalocean.com/user-service/docker.io/hpa-service@sha256:351ff33fce865e82b203353178ca5e907e88422f13c444dfd95658170cac4626
+    ports:
+      - "5001:3090"
 
-    user-service:
-      image: registry.digitalocean.com/user-service/docker.io/test/user-service@sha256:2568179285f605124aa29d2e4fca04e468b2a33c317930f2f6ad1fbc4aac02ec
-      ports:
-          - '3080:3080'
-      environment:
-          - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-          - DB_PORT=25060
-          - DB_USERNAME=gdldev100
-          - DB_PASSWORD=yS6JVh3i3FtplyqU
-          - DB_NAME=gdl
+  gdl-website:
+    image: registry.digitalocean.com/user-service/docker.io/gdl-website@sha256:e2b680209cfd32c2be65486605e2a11d16b92a3fd6de5ee830edb8b651456154
+    ports:
+      - "5002:3013"
 
-    notification-service:
-        image: registry.digitalocean.com/user-service/docker.io/test/notification-service@sha256:bd52b84f1d0ee9011b851fafa4ec833c0fdd4967726326a2cd68106cf8071b19
-        ports:
-            - '3079:3079'
-        environment:
-            - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-            - DB_PORT=25060
-            - DB_USERNAME=gdldev100
-            - DB_PASSWORD=yS6JVh3i3FtplyqU
-            - DB_ROOT_PASSWORD=
-            - DB_NAME=gdl
-            - smtpHost=smtp.mailtrap.io
-            - smtpPort=2525
-            - smtpUser=2b54126b040a36
-            - smtpPass=851c783623e2c7
-            - secure=true
+  saveinvest-service:
+    image: registry.digitalocean.com/user-service/docker.io/saveinvest-service@sha256:40ec2bb8cc6702b04cfe5bd09c8ca56fb14eb500197dc23a8a24e5090652c6e7
+    ports:
+      - "5003:3078"
 
-    account-service:
-        image: registry.digitalocean.com/user-service/docker.io/test/account-service@sha256:583e12c39de8bfa8990d809edb3bb13d7db6237a0aa0a6ab3c41fdebfd7ef2f7
-        ports:
-            - '3077:3077'
-        environment:
-            - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-            - DB_PORT=25060
-            - DB_USERNAME=gdldev100
-            - DB_PASSWORD=yS6JVh3i3FtplyqU
-            - DB_ROOT_PASSWORD=
-            - DB_NAME=gdl
+  bankone-service:
+    image: registry.digitalocean.com/user-service/docker.io/bankone-service@sha256:1f78ebe06ea1f1f0d87e89ef34588fff222a32844c4aff61c49e03647913d0d0
+    ports:
+      - "5004:3047"
 
-    transaction-service:
-        image: registry.digitalocean.com/user-service/docker.io/test/transactions-service@sha256:3f48ee73ccef61801cb21ca9f4581dec131fe8970810f29c733ccc25498ffc8a
-        ports:
-            - '3075:3075'
-        environment:
-            - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-            - DB_PORT=25060
-            - DB_USERNAME=gdldev100
-            - DB_PASSWORD=yS6JVh3i3FtplyqU
-            - DB_ROOT_PASSWORD=
-            - DB_NAME=gdl
+  notification-service:
+    image: registry.digitalocean.com/user-service/docker.io/notification-service@sha256:234aa354070641ae965eca6a1c8f670564fae27291d89bacb7da9f63d88c6c49
+    ports:
+      - "5005:3079"
 
-    saveinvest-service:
-        image: registry.digitalocean.com/user-service/docker.io/library/saveinvest-service@sha256:f6ba52c5243f11a62d08554f3382089bf3d372daa1715f73d50b321f6f4bb445
-        ports:
-            - '3078:3078'
-        environment:
-            - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-            - DB_PORT=25060
-            - DB_USERNAME=gdldev100
-            - DB_PASSWORD=yS6JVh3i3FtplyqU
-            - DB_ROOT_PASSWORD=
-            - DB_NAME=gdl
+  loan-service:
+    image: registry.digitalocean.com/user-service/docker.io/t/loan-service@sha256:27a7ebdb83c3b8c2c36ba25e12b27711af4710c85bcdc280ddcbbc8ce78db2e6
+    ports:
+      - "5006:3081"
 
-    loan-service:
-        image: registry.digitalocean.com/user-service/docker.io/test/loan-service@sha256:03cf760c7ee56a9f6a837eaa7050f6853749575cbf76f1d340c3bb45e7cb2bbe
-        ports:
-            - '3081:3081'
-        environment:
-            - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-            - DB_PORT=25060
-            - DB_USERNAME=gdldev100
-            - DB_PASSWORD=yS6JVh3i3FtplyqU
-            - DB_ROOT_PASSWORD=
-            - DB_NAME=gdl
+  symplus-service:
+    image: registry.digitalocean.com/user-service/docker.io/symplus-service@sha256:6f54e51e962610278347ecb698b9346842e1ad5185a4857b9a7d9d3a1ac1ca36
+    ports:
+      - "5007:3011"
 
-    hpa-service:
-        image: registry.digitalocean.com/user-service/docker.io/test/hpa-service@sha256:4d23b84634599d3daa2d70be6eeae12662b4488a18cb13f64a6283fd3fb15acb
-        ports:
-            - '3090:3090'
-        environment:
-            - DB_HOST=gdl-db-mysql-nyc3-49829-do-user-9991253-0.b.db.ondigitalocean.com
-            - DB_PORT=25060
-            - DB_USERNAME=gdldev100
-            - DB_PASSWORD=yS6JVh3i3FtplyqU
-            - DB_ROOT_PASSWORD=
-            - DB_NAME=gdl
+  transaction-service:
+    image: registry.digitalocean.com/user-service/docker.io/transaction-service@sha256:96aeb3ada303af55335c8f8643638aa5ca7db0cc283c1c571b9c542a31c3244b
+    ports:
+      - "5008:3075"
+
+  user-service:
+    image: registry.digitalocean.com/user-service/docker.io/user-service@sha256:0b8d6e7b2890a4de7e919228b588bd3059fb401d158834e030dc47b9ea14be2e
+    ports:
+      - "5009:3080"
+
+  dms-service:
+    image: registry.digitalocean.com/user-service/docker.io/dms-service@sha256:85b3f068fd57bf7cc7400b13043c154d406a438d4105da54f4fe639c4aefc14d
+    ports:
+      - "5010:3073"
+
+  account-service:
+    image: registry.digitalocean.com/user-service/docker.io/account-service@sha256:04e8bd91e3e0f8e26500d5ce3e2aa8afb147ba64e57c1bee58fae8b08127621a
+    ports:
+      - "5011:3077"
