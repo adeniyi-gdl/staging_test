@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   hpa-service:
     image: registry.digitalocean.com/stagingenv/hpa-service@sha256:928d25116e1310f8b2163db4aa5c3710869a3a5ce129b97026e98c4f82019fff
@@ -56,10 +58,15 @@ services:
 
   nginx-proxy:
     image: nginx:stable
+    container_name: nginx-proxy
     ports:
-      - "80:80"   # Cloudflare handles HTTPS
+      - "80:80"   # Cloudflare terminates HTTPS; Nginx only needs HTTP here
+      # If you later want Nginx to handle HTTPS directly, add:
+      # - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
+      # Optional: mount certs if you plan to enable SSL
+      # - /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - user-service
       - account-service
