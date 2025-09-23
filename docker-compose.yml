@@ -3,61 +3,73 @@ version: "3.9"
 services:
   hpa-service:
     image: registry.digitalocean.com/stagingenv/hpa-service@sha256:c27cf2945b7cb1bac249f35b5951aafdc86ac2693ffa6c6872e44278aae71b29
+    platform: linux/amd64
     networks:
       - staging_net
 
   gdl-website:
     image: registry.digitalocean.com/stagingenv/gdl-website@sha256:3d6e430f053b5649ee654c7f60159949d6aa655b2366ca47ec6367433d5b2b43
+    platform: linux/amd64
     networks:
       - staging_net
 
   saveinvest-service:
     image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:49f633685c78bcd026685e20ef8b7d7c127519a3a374de41aa11a5a6a4349dfa
+    platform: linux/amd64
     networks:
       - staging_net
 
   bankone-service:
     image: registry.digitalocean.com/stagingenv/bankone-service@sha256:bb264c6ee936560dbaaa0bb773dea21e2fcb316b386711a6bd2609a11679eacc
+    platform: linux/amd64
     networks:
       - staging_net
 
   notification-service:
     image: registry.digitalocean.com/stagingenv/notification-service@sha256:530b04d3add31148e1c2ed7c3e1cd7e4e3bfcbf55109f899521e56a57c562e89
+    platform: linux/amd64
     networks:
       - staging_net
 
   loan-service:
     image: registry.digitalocean.com/stagingenv/loan-service@sha256:b1939c134856bef087ed6d0f46822a027a128ce540ffe58c3e28ab3f19b0e3d5
+    platform: linux/amd64
     networks:
       - staging_net
 
   symplus-service:
     image: registry.digitalocean.com/stagingenv/symplus-service@sha256:5bb424e143cf0fd9fe18cbd4c988062374e10b0101f0507caf4fe2cec461d3d3
+    platform: linux/amd64
     networks:
       - staging_net
 
   transaction-service:
     image: registry.digitalocean.com/stagingenv/transaction-service@sha256:41d1b2c63dd0260edb657ffa17540c8380adb77de16b6855b00636d6a6246404
+    platform: linux/amd64
     networks:
       - staging_net
 
   user-service:
     image: registry.digitalocean.com/stagingenv/user-service@sha256:8cc2dd097c8d628364d9f1facb26b51b976c217acacb7e4f94491588d0300c0b
+    platform: linux/amd64
     networks:
       - staging_net
 
   dms-service:
     image: registry.digitalocean.com/stagingenv/dms-service@sha256:b2892d23f4d684c27c821ef8ffb34a19bcd616b9e066eaa33e0318d3b7097a96
+    platform: linux/amd64
     networks:
       - staging_net
 
   account-service:
     image: registry.digitalocean.com/stagingenv/account-service@sha256:c369cf1b886052227b838b61dd797cf4d37c9c6cc03284a0f4facaca81a9faee
+    platform: linux/amd64
     networks:
       - staging_net
 
   nginx-proxy:
     image: nginx:stable
+    platform: linux/amd64
     container_name: nginx-proxy
     ports:
       - "80:80"   # Cloudflare terminates HTTPS; Nginx only needs HTTP here
