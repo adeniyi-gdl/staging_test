@@ -6,6 +6,11 @@ services:
     platform: linux/amd64
     networks:
       - staging_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]   # adjust port/path
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   gdl-website:
     image: registry.digitalocean.com/stagingenv/gdl-website@sha256:3d6e430f053b5649ee654c7f60159949d6aa655b2366ca47ec6367433d5b2b43
@@ -44,7 +49,7 @@ services:
       - staging_net
 
   transaction-service:
-    image: registry.digitalocean.com/stagingenv/transaction-service@sha256:41d1b2c63dd0260edb657ffa17540c8380adb77de16b6855b00636d6a6246404
+    image: registry.digitalocean.com/stagingenv/transaction-service@sha256:9059869bd08c1bbcdabe41f18b541e7b86e6cd874139977bbff0a47f8fc173a6
     platform: linux/amd64
     networks:
       - staging_net
@@ -72,25 +77,32 @@ services:
     platform: linux/amd64
     container_name: nginx-proxy
     ports:
-      - "80:80"   # Cloudflare terminates HTTPS; Nginx only needs HTTP here
-      # If you later want Nginx to handle HTTPS directly, add:
-      # - "443:443"
+      - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
-      # Optional: mount certs if you plan to enable SSL
-      # - /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
-      - user-service
-      - account-service
-      - dms-service
-      - hpa-service
-      - gdl-website
-      - saveinvest-service
-      - bankone-service
-      - notification-service
-      - loan-service
-      - symplus-service
-      - transaction-service
+      user-service:
+        condition: service_healthy
+      account-service:
+        condition: service_healthy
+      transaction-service:
+        condition: service_healthy
+      dms-service:
+        condition: service_started
+      hpa-service:
+        condition: service_started
+      gdl-website:
+        condition: service_started
+      saveinvest-service:
+        condition: service_started
+      bankone-service:
+        condition: service_started
+      notification-service:
+        condition: service_started
+      loan-service:
+        condition: service_started
+      symplus-service:
+        condition: service_started
     networks:
       - staging_net
 
