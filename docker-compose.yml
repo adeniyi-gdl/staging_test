@@ -1,41 +1,41 @@
 services:
   hpa-service:
-    image: registry.digitalocean.com/user-service/docker.io/hpa-service@sha256:351ff33fce865e82b203353178ca5e907e88422f13c444dfd95658170cac4626
+    image: registry.digitalocean.com/stagingenv/hpa-service@sha256:928d25116e1310f8b2163db4aa5c3710869a3a5ce129b97026e98c4f82019fff
     networks:
       - staging_net
 
   gdl-website:
-    image: registry.digitalocean.com/user-service/docker.io/gdl-website@sha256:e2b680209cfd32c2be65486605e2a11d16b92a3fd6de5ee830edb8b651456154
+    image: registry.digitalocean.com/stagingenv/gdl-website@sha256:1433edf39ea85374efbb8065dc2382e27dc602e13e76d67e75760cfe28557c01
     networks:
       - staging_net
 
   saveinvest-service:
-    image: registry.digitalocean.com/user-service/docker.io/saveinvest-service@sha256:40ec2bb8cc6702b04cfe5bd09c8ca56fb14eb500197dc23a8a24e5090652c6e7
+    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:7aa3a89cec0ea87dc7e8b08d37954a9d5c80d4a8bccec1bc8de03286f3c7bed9
     networks:
       - staging_net
 
   bankone-service:
-    image: registry.digitalocean.com/user-service/docker.io/bankone-service@sha256:1f78ebe06ea1f1f0d87e89ef34588fff222a32844c4aff61c49e03647913d0d0
+    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:7d935d3b4da8b91cc4b4eb94dd3793a95ffaf3936d19b230ef6cbd9a747c969c
     networks:
       - staging_net
 
   notification-service:
-    image: registry.digitalocean.com/user-service/docker.io/notification-service@sha256:234aa354070641ae965eca6a1c8f670564fae27291d89bacb7da9f63d88c6c49
+    image: registry.digitalocean.com/stagingenv/notification-service@sha256:707e6d4dfe32b6b99437cd0abe8cb0d6472242fca9b211b2ee4e0f9af2313bba
     networks:
       - staging_net
 
   loan-service:
-    image: registry.digitalocean.com/user-service/docker.io/t/loan-service@sha256:27a7ebdb83c3b8c2c36ba25e12b27711af4710c85bcdc280ddcbbc8ce78db2e6
+    image: registry.digitalocean.com/stagingenv/loan-service@sha256:cd9addbdc5e987d7ea80e6f3e66bde471952926b4218437a4f3a668a2232d27a
     networks:
       - staging_net
 
   symplus-service:
-    image: registry.digitalocean.com/user-service/docker.io/symplus-service@sha256:6f54e51e962610278347ecb698b9346842e1ad5185a4857b9a7d9d3a1ac1ca36
+    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:dba3d3c006519b142ceee6e512c0f5bf1c8477fb362d18492f48203c86605ec8
     networks:
       - staging_net
 
   transaction-service:
-    image: registry.digitalocean.com/user-service/docker.io/transaction-service@sha256:96aeb3ada303af55335c8f8643638aa5ca7db0cc283c1c571b9c542a31c3244b
+    image: registry.digitalocean.com/stagingenv/transaction-service@sha256:4b0fe7bed885d6dfda5ca2c6f82f2ef6acec0e2bb5f0992e97a2ab701c235a8d
     networks:
       - staging_net
 
@@ -45,12 +45,12 @@ services:
       - staging_net
 
   dms-service:
-    image: registry.digitalocean.com/user-service/docker.io/dms-service@sha256:85b3f068fd57bf7cc7400b13043c154d406a438d4105da54f4fe639c4aefc14d
+    image: registry.digitalocean.com/stagingenv/dms-service@sha256:e446244f672550bbee10d4c23a1b0e4bdeae7f7d3590f91b530a07f5a13572b0
     networks:
       - staging_net
 
   account-service:
-    image: registry.digitalocean.com/stagingenv/account-service@sha256:7cb0023306044d808d19b7e6547131cda08e3f84507875cad55f8a3221de45c2
+    image: registry.digitalocean.com/stagingenv/account-service@sha256:cb45619d669360e68739c8a338147a041b506523f4391f98f13db28105dc098b
     networks:
       - staging_net
 
