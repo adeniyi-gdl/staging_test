@@ -36,7 +36,7 @@ services:
       - staging_net
 
   symplus-service:
-    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:a98ab554b24f32fd0bab68e77309abb96d2e7d10438306e930b0d843f79c56ef
+    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:196595e8818d58fc63f30577f1db11ba12cec0a506b98e7c288dfa134e884d42
     platform: linux/amd64
     networks:
       - staging_net
