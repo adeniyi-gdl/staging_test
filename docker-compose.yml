@@ -18,7 +18,7 @@ services:
       - staging_net
 
   bankone-service:
-    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:1ef0a04bc27890e45a4d5e4eae4e578fe5a6e3af6c6e35a710651715d1a8ddb6
+    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:5dad4b7a06a2da6da374a440642e3a1ee5d29655ed2713e48308a1db860b07a2
     platform: linux/amd64
     networks:
       - staging_net
