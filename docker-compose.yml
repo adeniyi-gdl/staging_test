@@ -12,7 +12,7 @@ services:
       - staging_net
 
   saveinvest-service:
-    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:60a6af5b83de064dbc4699ae848ebc02076d6b5550835246bdad9378ba37fe43
+    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:6582976f65420d84a32a269f533e08969164e931ae8562797d23119a8f4637ba
     platform: linux/amd64
     networks:
       - staging_net
@@ -42,13 +42,13 @@ services:
       - staging_net
 
   transaction-service:
-    image: registry.digitalocean.com/stagingenv/transaction-service@sha256:a61a33c3806d56c527e21e52b39fb26c45d969b88e23813cffdfcd788d7a8138
+    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:b91e1747f3a0bdf83ac136f43e0e0dcb4a7eb53974e6ce8cf1c16edbfbbfec0f
     platform: linux/amd64
     networks:
       - staging_net
 
   user-service:
-    image: registry.digitalocean.com/stagingenv/user-service@sha256:d53a011a1af41fec9e0b0d4e876cedb67f7077da4d84bbc891e95cca3bac7e24
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:3cc4fe4c0e558e0659dc16118dbdf0e8c164ae982a597ed437ae76b828edc8e3
     platform: linux/amd64
     networks:
       - staging_net
