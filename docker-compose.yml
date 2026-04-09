@@ -86,7 +86,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - /etc/letsencrypt/live/api-test.housemoni.ng:/etc/letsencrypt/live/api-test.housemoni.ng:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro      # <-- mount full cert folder
       - /etc/nginx/proxy_params:/etc/nginx/proxy_params:ro
     depends_on:
       - user-service
