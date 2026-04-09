@@ -1,4 +1,13 @@
+version: "3.9"
+
+networks:
+  staging_net:
+    driver: bridge
+
 services:
+  # --------------------------
+  # Application Services
+  # --------------------------
   hpa-service:
     image: registry.digitalocean.com/stagingenv/hpa-service@sha256:05c7bdfc0c03232236919045e5ed9c0497a6ce626b12c582fe38ce85998fa6ee
     platform: linux/amd64
@@ -65,14 +74,20 @@ services:
     networks:
       - staging_net
 
+  # --------------------------
+  # Nginx Reverse Proxy
+  # --------------------------
   nginx-proxy:
     image: nginx:stable
     platform: linux/amd64
     container_name: nginx-proxy
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - /etc/letsencrypt/live/api-test.housemoni.ng:/etc/letsencrypt/live/api-test.housemoni.ng:ro
+      - /etc/nginx/proxy_params:/etc/nginx/proxy_params:ro
     depends_on:
       - user-service
       - account-service
@@ -87,8 +102,3 @@ services:
       - symplus-service
     networks:
       - staging_net
-
-networks:
-  staging_net:
-    driver: bridge
-    
