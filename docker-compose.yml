@@ -51,13 +51,13 @@ services:
       - staging_net
 
   transaction-service:
-    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:b91e1747f3a0bdf83ac136f43e0e0dcb4a7eb53974e6ce8cf1c16edbfbbfec0f
+    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:69724460d44196cf46bfaf45637d7c4fe43957e46034f91e1bf17c9e565cad2f
     platform: linux/amd64
     networks:
       - staging_net
 
   user-service:
-    image: registry.digitalocean.com/stagingenv/user-service@sha256:a4854cbb13c7cd55945d36ba88e28788f7461a9e598645f951b08ca576f06d1c
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:26c27ea0b56c7673d23d8b864891dd094aa453ad06a39a108cb943983016baed
     platform: linux/amd64
     networks:
       - staging_net
