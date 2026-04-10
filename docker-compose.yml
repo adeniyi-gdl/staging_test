@@ -21,7 +21,7 @@ services:
       - staging_net
 
   saveinvest-service:
-    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:6582976f65420d84a32a269f533e08969164e931ae8562797d23119a8f4637ba
+    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:0cbcd761ec85b85ab2ada88a0fa03d6a50aa14258a8d04d4e9c5bf3f6a6bbf2a
     platform: linux/amd64
     networks:
       - staging_net
