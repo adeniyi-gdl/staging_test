@@ -9,67 +9,67 @@ services:
   # Application Services
   # --------------------------
   hpa-service:
-    image: registry.digitalocean.com/stagingenv/hpa-service@sha256:65ae69ef014497eaa7f0a0e47c4af37e5b6b7a1b5d391490f0978a35ead71b0a
+    image: registry.digitalocean.com/stagingenv/hpa-service@sha256:8cf4b43249eb78ead859bdee55556dc364f495cf795fda5f52e9706db9af1bb0
     platform: linux/amd64
     networks:
       - staging_net
 
   gdl-website:
-    image: registry.digitalocean.com/stagingenv/gdl-website@sha256:3d6e430f053b5649ee654c7f60159949d6aa655b2366ca47ec6367433d5b2b43
+    image: registry.digitalocean.com/stagingenv/gdl-website@sha256:9366899785621f314fe349fd67100aef6733f63c0723c10bc30420020f7f935c
     platform: linux/amd64
     networks:
       - staging_net
 
   saveinvest-service:
-    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:0cbcd761ec85b85ab2ada88a0fa03d6a50aa14258a8d04d4e9c5bf3f6a6bbf2a
+    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:57821d1c3b62a094742921a22bf69276b23d332541cf3037f33131180339cdc2
     platform: linux/amd64
     networks:
       - staging_net
 
   bankone-service:
-    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:b1a2556a2958e4724a967a0dcff160bcbf16aa9116696974147aa53d80f07b1f
+    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:3e33413d29eb0d94718732fb29f8f95da3241cceb1c3a8fd7f0c4a78e32fe75d
     platform: linux/amd64
     networks:
       - staging_net
 
   notification-service:
-    image: registry.digitalocean.com/stagingenv/notification-service@sha256:25ab456381ed082d1729f66c16971e561513e3cc8ea05544056774068289be3a
+    image: registry.digitalocean.com/stagingenv/notification-service@sha256:03496096d60dfb80fcd8f0eeafc4c68e69a1071322cf07e62026659088230180
     platform: linux/amd64
     networks:
       - staging_net
 
   loan-service:
-    image: registry.digitalocean.com/stagingenv/loan-service@sha256:b814317f1ee1f2cd79e99a8435d247da4a0a0913cdb8afdca2ca3595aa7b33fc
+    image: registry.digitalocean.com/stagingenv/loan-service@sha256:2da8848421492409560e3083c4f2477fd208d936ad637f084ebd9894980abf2d
     platform: linux/amd64
     networks:
       - staging_net
 
   symplus-service:
-    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:5ac91234bffce893e83e3f31b437b85f06ed73bc948ffa85b72281016e6d7ebb
+    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:131b96c46e00a2d3b0ec19c15eb98e9c53eeac683b0f9ea2bbb4af4818a9927d
     platform: linux/amd64
     networks:
       - staging_net
 
   transaction-service:
-    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:69724460d44196cf46bfaf45637d7c4fe43957e46034f91e1bf17c9e565cad2f
+    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:6194e6701ebeda1a058b653550c4ee43c3f5a16132dc774fa2187dff3f3e7505
     platform: linux/amd64
     networks:
       - staging_net
 
   user-service:
-    image: registry.digitalocean.com/stagingenv/user-service@sha256:26c27ea0b56c7673d23d8b864891dd094aa453ad06a39a108cb943983016baed
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:1a2e427d40bf1121b4fdcea0c57b512bb7c9e1e22b0e33732474b50c4e0d06e9
     platform: linux/amd64
     networks:
       - staging_net
 
   dms-service:
-    image: registry.digitalocean.com/stagingenv/dms-service@sha256:9979fe133e2c714c13dc919c76a92a0736e642c95467145d2addd9a1b35812da
+    image: registry.digitalocean.com/stagingenv/dms-service@sha256:8c2f46b79f4a3063173e2c2fc9bca1834df2878b4b29ede250495960a6d82da2
     platform: linux/amd64
     networks:
       - staging_net
 
   account-service:
-    image: registry.digitalocean.com/stagingenv/account-service@sha256:2f561799df3eefdbcc0323a8906867718fdd4294e37ba1a887fce0fd87d0cf2f
+    image: registry.digitalocean.com/stagingenv/account-service@sha256:10244dc007bcc51cc9228a0321a543ee85cff7f81640c09a188687798ddfe931
     platform: linux/amd64
     networks:
       - staging_net
