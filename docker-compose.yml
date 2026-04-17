@@ -21,19 +21,19 @@ services:
       - staging_net
 
   saveinvest-service:
-    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:6ec6c2e9fd09c930e20c35bf7e24701b68795fbe8dd59aa076dafb9d9d5587d9
+    image: registry.digitalocean.com/stagingenv/saveinvest-service@sha256:508f906fb27b5f12c4c9fa6192362112c31b77f37f40d505f2dfe36f473e2afb
     platform: linux/amd64
     networks:
       - staging_net
 
   bankone-service:
-    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:11d1102713c8369d218b59d1f0efdbc09820ebcc0adef64e64aebeefd4cf878b
+    image: registry.digitalocean.com/stagingenv/bankone-service@sha256:66bfad884ecd85ec5e93b307e665e843dd7505ac27c00feb0f35f8238d918f80
     platform: linux/amd64
     networks:
       - staging_net
 
   notification-service:
-    image: registry.digitalocean.com/stagingenv/notification-service@sha256:ce8c1616ba94bbc231d0178dd74cc1ac056edb3b0df7021f4bd032260a4a886c
+    image: registry.digitalocean.com/stagingenv/notification-service@sha256:5ad9e27b52d42317cdc7e3e99d2f76009fbdb1896eaa0fcecd186390a2af9649
     platform: linux/amd64
     networks:
       - staging_net
@@ -45,19 +45,19 @@ services:
       - staging_net
 
   symplus-service:
-    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:ca4e1651b63edac8ee9fcecbf042a1453abad57d3e38277b2a1ad366ee0a1300
+    image: registry.digitalocean.com/stagingenv/symplus-service@sha256:6d5985a2d1da3883735fd6105cdc65170e1232dc45371b1a1c72b9b437aa51ae
     platform: linux/amd64
     networks:
       - staging_net
 
   transaction-service:
-    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:3731ff35b67af4977d9ba9aecd476076db837b7ea2b5eab941c1b5a0d1ba29a0
+    image: registry.digitalocean.com/stagingenv/transactions-service@sha256:edf7373b3b298ef85b6148be481ed2ad286afa4ecd97b427ae90f14da74f22b1
     platform: linux/amd64
     networks:
       - staging_net
 
   user-service:
-    image: registry.digitalocean.com/stagingenv/user-service@sha256:d5d93c5d73d8452e8a18c007924a13bf5b753fb82f24c0569cc9627c890f3213
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:71b776268bf9d4922f330e2edeb2c26ef57451020eb9388b11fe11a3c644c852
     platform: linux/amd64
     networks:
       - staging_net
@@ -69,7 +69,7 @@ services:
       - staging_net
 
   account-service:
-    image: registry.digitalocean.com/stagingenv/account-service@sha256:f2e884aed158abb475a362e9fce35f3d5bfa50225d33a97aba9867b3c04b9634
+    image: registry.digitalocean.com/stagingenv/account-service@sha256:aa8496daea257133613fe6464da918f5069878735736e39e5df50af4eec6f523
     platform: linux/amd64
     networks:
       - staging_net
