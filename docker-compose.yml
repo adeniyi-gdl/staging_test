@@ -57,7 +57,7 @@ services:
       - staging_net
 
   user-service:
-    image: registry.digitalocean.com/stagingenv/user-service@sha256:691d718adb83f426c4264f4cb3290a561ef9a5bdc53304be60442b901073f3dd
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:9c61cebb8f9d28d4bc9cb9f6d7beabc8f533ad81f790330fc4b67df2c40be3fb
     platform: linux/amd64
     networks:
       - staging_net
