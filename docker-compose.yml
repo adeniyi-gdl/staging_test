@@ -39,7 +39,7 @@ services:
       - staging_net
 
   loan-service:
-    image: registry.digitalocean.com/stagingenv/loan-service@sha256:5a2709ff4fedf86a8e458b2c909b3e047fe1ebe91d5e671933c35aafb3ec456c
+    image: registry.digitalocean.com/stagingenv/loans-service@sha256:fa4f4ebb735fa4e63b7f0b94d0b8ddb52644fba4bb3970fce1b396a391d1660b
     platform: linux/amd64
     networks:
       - staging_net
@@ -57,7 +57,7 @@ services:
       - staging_net
 
   user-service:
-    image: registry.digitalocean.com/stagingenv/user-service@sha256:5d28a28def656a0daecaab279120e5fee6faf77a9fb098c3dbf16c10da7bdb31
+    image: registry.digitalocean.com/stagingenv/user-service@sha256:f0dfbcfec6d58171c25bd52d9ec48671ce43251665ae63f8f33b4ce57f444276
     platform: linux/amd64
     networks:
       - staging_net
