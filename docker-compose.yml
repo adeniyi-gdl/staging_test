@@ -33,7 +33,7 @@ services:
       - staging_net
 
   notification-service:
-    image: registry.digitalocean.com/stagingenv/notification-service@sha256:9d808af233aa203eac8f5c19fb5ab282daf6b97101d88a53445995f274e9972a
+    image: registry.digitalocean.com/stagingenv/notification-service@sha256:56c9dc30cbc160b32408a35c6fdd0bc0fd015c9b72f2a86d28ddaf107a030158
     platform: linux/amd64
     networks:
       - staging_net
